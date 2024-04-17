@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.BoxBlur?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="869.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coinCompanion.app.MainController">
+   <children>
+      <MenuBar layoutY="-1.0" prefHeight="17.0" prefWidth="869.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="   File   ">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#loadAndInit" text="  Load Data       " />
+                  <MenuItem mnemonicParsing="false" onAction="#save" text="  Save Date" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#quit" text="  Quit">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="ESCAPE" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text=" About ">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#aboutPopup" text="About CoinCompanion" />
+               </items></Menu>
+         </menus>
+      </MenuBar>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="552.0" layoutX="-1.0" layoutY="18.0" stroke="WHITE" strokeType="INSIDE" visible="false" width="211.0" />
+      <ImageView fitHeight="547.0" fitWidth="238.0" layoutX="635.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/Profile%20Background.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="26.0" layoutY="41.0" opacity="0.73" prefHeight="30.0" prefWidth="183.0" text="CoinCompanion">
+         <font>
+            <Font name="Arial Bold" size="19.0" />
+         </font>
+      </Label>
+      <Rectangle fx:id="addIncomeRectangle" arcHeight="25.0" arcWidth="25.0" fill="#9ba6d7" height="38.0" layoutX="18.0" layoutY="81.0" onMouseClicked="#switchToAddIncomePopup" onMouseEntered="#addIncomeHoverEntered" onMouseExited="#addIncomeHoverExited" stroke="WHITE" strokeType="INSIDE" style="-fx-cursor: hand;" width="173.0">
+         <effect>
+            <BoxBlur />
+         </effect>
+      </Rectangle>
+      <Label fx:id="addIncome" layoutX="57.0" layoutY="85.0" onMouseClicked="#switchToAddIncomePopup" onMouseEntered="#addIncomeHoverEntered" onMouseExited="#addIncomeHoverExited" prefHeight="30.0" prefWidth="126.0" style="-fx-cursor: hand;" text="Add Income" textFill="#574c4c">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="26.0" fitWidth="27.0" layoutX="27.0" layoutY="88.0" onMouseClicked="#switchToAddIncomePopup" onMouseEntered="#addIncomeHoverEntered" onMouseExited="#addIncomeHoverExited" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+         <image>
+            <Image url="@../assets/Add%20Income%20Icon.png" />
+         </image>
+      </ImageView>
+      <Rectangle fx:id="addExpenseRectangle" arcHeight="25.0" arcWidth="25.0" fill="#ff6e6e" height="38.0" layoutX="17.0" layoutY="133.0" onMouseClicked="#switchToAddExpensePopup" onMouseEntered="#addExpenseHoverEntered" onMouseExited="#addExpenseHoverExited" stroke="WHITE" strokeType="INSIDE" style="-fx-cursor: hand;" width="173.0">
+         <effect>
+            <BoxBlur />
+         </effect>
+      </Rectangle>
+      <Label fx:id="addExpense" layoutX="58.0" layoutY="137.0" onMouseClicked="#switchToAddExpensePopup" onMouseEntered="#addExpenseHoverEntered" onMouseExited="#addExpenseHoverExited" prefHeight="30.0" prefWidth="124.0" style="-fx-cursor: hand;" text="Add Expense" textFill="#574c4c">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="26.0" fitWidth="23.0" layoutX="27.0" layoutY="141.0" onMouseClicked="#switchToAddExpensePopup" onMouseEntered="#addExpenseHoverEntered" onMouseExited="#addExpenseHoverExited" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+         <image>
+            <Image url="@../assets/Add%20Expense%20Icon.png" />
+         </image>
+      </ImageView>
+      <Rectangle fx:id="incomeSavedRectangle" arcHeight="25.0" arcWidth="25.0" fill="#c9c9c9" height="38.0" layoutX="17.0" layoutY="186.0" onMouseEntered="#incomeSavedHoverEntered" onMouseExited="#incomeSavedHoverExited" stroke="WHITE" strokeType="INSIDE" style="-fx-cursor: hand;" width="173.0">
+         <effect>
+            <BoxBlur />
+         </effect>
+      </Rectangle>
+      <Label fx:id="incomeSaved" layoutX="58.0" layoutY="190.0" onMouseClicked="#incomeSavedButtonClicked" onMouseEntered="#incomeSavedHoverEntered" onMouseExited="#incomeSavedHoverExited" prefHeight="30.0" prefWidth="125.0" style="-fx-cursor: hand;" text="Income Saved" textFill="#574c4c">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="26.0" fitWidth="23.0" layoutX="28.0" layoutY="194.0" onMouseEntered="#incomeSavedHoverEntered" onMouseExited="#incomeSavedHoverExited" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+         <image>
+            <Image url="@../assets/Income%20Saved%20Icon.png" />
+         </image></ImageView>
+      <Rectangle fx:id="spendingLimitRectangle" arcHeight="25.0" arcWidth="25.0" fill="#c9c9c9" height="38.0" layoutX="16.0" layoutY="287.0" onMouseClicked="#switchToSpendingLimitPopup" onMouseEntered="#spendingLimitsHoverEntered" onMouseExited="#spendingLimitsHoverExited" stroke="WHITE" strokeType="INSIDE" style="-fx-cursor: hand;" width="173.0">
+         <effect>
+            <BoxBlur />
+         </effect>
+      </Rectangle>
+      <Label fx:id="spendingLimits" layoutX="57.0" layoutY="291.0" onMouseClicked="#switchToSpendingLimitPopup" onMouseEntered="#spendingLimitsHoverEntered" onMouseExited="#spendingLimitsHoverExited" prefHeight="30.0" prefWidth="125.0" style="-fx-cursor: hand;" text="Spending Limits" textFill="#574c4c">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="26.0" fitWidth="20.0" layoutX="29.0" layoutY="295.0" onMouseClicked="#switchToSpendingLimitPopup" onMouseEntered="#spendingLimitsHoverEntered" onMouseExited="#spendingLimitsHoverExited" opacity="0.69" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+         <image>
+            <Image url="@../assets/Spending%20Limit%20Icon.png" />
+         </image></ImageView>
+      <Rectangle fx:id="savingsRateRectangle" arcHeight="25.0" arcWidth="25.0" fill="#c9c9c9" height="38.0" layoutX="17.0" layoutY="237.0" onMouseEntered="#savingsRateHoverEntered" onMouseExited="#savingsRateHoverExited" stroke="WHITE" strokeType="INSIDE" style="-fx-cursor: hand;" width="173.0">
+         <effect>
+            <BoxBlur />
+         </effect>
+      </Rectangle>
+      <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="28.0" layoutY="244.0" onMouseEntered="#savingsRateHoverEntered" onMouseExited="#savingsRateHoverExited" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+         <image>
+            <Image url="@../assets/Savings%20Rate%20Icon.png" />
+         </image></ImageView>
+      <Label fx:id="savingsRate" layoutX="58.0" layoutY="241.0" onMouseClicked="#getSavingsRate" onMouseEntered="#savingsRateHoverEntered" onMouseExited="#savingsRateHoverExited" prefHeight="30.0" prefWidth="125.0" style="-fx-cursor: hand;" text="Savings Rate" textFill="#574c4c">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Label>
+      <Rectangle fx:id="aboutRectangle" arcHeight="25.0" arcWidth="25.0" fill="#4badd7" height="38.0" layoutX="18.0" layoutY="467.0" onMouseClicked="#aboutPopup" onMouseEntered="#aboutHoverEntered" onMouseExited="#aboutHoverExited" stroke="WHITE" strokeType="INSIDE" style="-fx-cursor: hand;" width="173.0">
+         <effect>
+            <BoxBlur />
+         </effect>
+      </Rectangle>
+      <Label fx:id="about" layoutX="59.0" layoutY="471.0" onMouseClicked="#aboutPopup" onMouseEntered="#aboutHoverEntered" onMouseExited="#aboutHoverExited" prefHeight="30.0" prefWidth="127.0" style="-fx-cursor: hand;" text="About" textFill="#574c4c">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="26.0" fitWidth="23.0" layoutX="28.0" layoutY="475.0" onMouseClicked="#aboutPopup" onMouseEntered="#aboutHoverEntered" onMouseExited="#aboutHoverExited" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+         <image>
+            <Image url="@../assets/About Icon.png" />
+         </image>
+      </ImageView>
+      <Rectangle fx:id="quitRectangle" arcHeight="25.0" arcWidth="25.0" fill="#c57c7c" height="38.0" layoutX="17.0" layoutY="517.0" onMouseEntered="#quitHoverEntered" onMouseExited="#quitHoverExited" stroke="WHITE" strokeType="INSIDE" style="-fx-cursor: hand;" width="173.0">
+         <effect>
+            <BoxBlur />
+         </effect>
+      </Rectangle>
+      <Label fx:id="quit" layoutX="59.0" layoutY="521.0" onMouseClicked="#quit" onMouseEntered="#quitHoverEntered" onMouseExited="#quitHoverExited" prefHeight="30.0" prefWidth="121.0" style="-fx-cursor: hand;" text="Quit" textFill="#574c4c">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="26.0" fitWidth="23.0" layoutX="29.0" layoutY="524.0" onMouseEntered="#quitHoverEntered" onMouseExited="#quitHoverExited" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+         <image>
+            <Image url="@../assets/Quit%20Icon.png" />
+         </image></ImageView>
+      <Line endX="208.66668701171875" endY="2.333333969116211" layoutX="2.0" layoutY="22.0" opacity="0.21" startX="208.6666717529297" startY="548.0" />
+      <Button fx:id="balanceTopButton" layoutX="234.0" layoutY="43.0" mnemonicParsing="false" onAction="#topThreeButtonsMouseClicked" prefHeight="25.0" prefWidth="122.0" text="Balance" />
+      <Button fx:id="incomeTopButton" layoutX="363.0" layoutY="43.0" mnemonicParsing="false" onAction="#topThreeButtonsMouseClicked" prefHeight="25.0" prefWidth="122.0" text="Income" />
+      <Button fx:id="expenseTopButton" layoutX="492.0" layoutY="43.0" mnemonicParsing="false" onAction="#topThreeButtonsMouseClicked" prefHeight="25.0" prefWidth="122.0" text="Expense" />
+      <Label fx:id="optionIdentifierLabel" layoutX="238.0" layoutY="89.0" prefHeight="30.0" prefWidth="183.0" text="Balance">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#ced0d2" height="57.0" layoutX="235.0" layoutY="121.0" opacity="0.2" stroke="BLACK" strokeType="INSIDE" width="375.0" />
+      <Label fx:id="optionDisplayValue" layoutX="243.0" layoutY="115.0" prefHeight="68.0" prefWidth="357.0" text="\$0.00">
+         <font>
+            <Font name="Arial Black" size="45.0" />
+         </font>
+      </Label>
+      <Label fx:id="optionDisplayStatus" layoutX="239.0" layoutY="184.0" prefHeight="1.0" prefWidth="336.0" text="Your balance is at $0.00." />
+      <Label layoutX="238.0" layoutY="218.0" text="Latest Transactions" />
+      <Label fx:id="goalNameLabel" layoutX="235.0" layoutY="471.0" prefHeight="26.0" prefWidth="375.0" text="Goal Name">
+         <font>
+            <Font name="Arial Bold" size="22.0" />
+         </font>
+      </Label>
+      <ProgressBar fx:id="progressBar" layoutX="234.0" layoutY="502.0" prefHeight="18.0" prefWidth="375.0" progress="0.0">
+         <effect>
+            <ColorAdjust brightness="0.28" contrast="-0.25" hue="-0.28" />
+         </effect>
+      </ProgressBar>
+      <Label fx:id="goalProgressStatus" layoutX="236.0" layoutY="524.0" text="You are 0% done with your goal." />
+      <Line endX="208.6666259765625" endY="-1.6666698455810547" layoutX="426.0" layoutY="26.0" opacity="0.21" startX="208.6666717529297" startY="548.0" />
+      <ImageView fitHeight="150.0" fitWidth="183.0" layoutX="680.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/Profile%20Icon.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="profileName" alignment="CENTER" layoutX="663.0" layoutY="226.0" prefHeight="30.0" prefWidth="183.0" text="Profile Name" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Label>
+      <Rectangle fx:id="editProfileRectangle" arcHeight="25.0" arcWidth="25.0" fill="#78d9ff" height="38.0" layoutX="654.0" layoutY="315.0" mouseTransparent="true" onMouseEntered="#editProfileHoverEntered" onMouseExited="#editProfileHoverExited" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-cursor: hand;" width="200.0">
+         <effect>
+            <Blend />
+         </effect>
+      </Rectangle>
+      <Label fx:id="switchToEditProfile" alignment="CENTER" layoutX="664.0" layoutY="320.0" onMouseClicked="#switchToEditProfile" onMouseEntered="#editProfileHoverEntered" onMouseExited="#editProfileHoverExited" prefHeight="30.0" prefWidth="191.0" style="-fx-cursor: hand;" text="Edit Profile">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </Label>
+      <Rectangle fx:id="addProfileRectangle" arcHeight="25.0" arcWidth="25.0" blendMode="SCREEN" fill="#47ffa3" height="38.0" layoutX="654.0" layoutY="265.0" onMouseClicked="#switchToSignUpForAddProfile" onMouseEntered="#addProfileHoverEntered" onMouseExited="#addProfileHoverExited" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-cursor: hand;" width="200.0">
+         <effect>
+            <Blend />
+         </effect>
+      </Rectangle>
+      <Label fx:id="addProfile" alignment="CENTER" layoutX="662.0" layoutY="270.0" onMouseClicked="#switchToSignUpForAddProfile" onMouseEntered="#addProfileHoverEntered" onMouseExited="#addProfileHoverExited" prefHeight="30.0" prefWidth="183.0" style="-fx-cursor: hand;" text="Add Profile">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </Label>
+      <Rectangle fx:id="loadDataRectangle" arcHeight="25.0" arcWidth="25.0" blendMode="SCREEN" fill="#c9c9c9" height="38.0" layoutX="654.0" layoutY="366.0" onMouseEntered="#loadDataHoverEntered" onMouseExited="#loadDataHoverExited" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-cursor: hand;" width="200.0">
+         <effect>
+            <Blend />
+         </effect>
+      </Rectangle>
+      <Label fx:id="loadData" alignment="CENTER" layoutX="664.0" layoutY="371.0" onMouseClicked="#loadAndInit" onMouseEntered="#loadDataHoverEntered" onMouseExited="#loadDataHoverExited" prefHeight="30.0" prefWidth="183.0" style="-fx-cursor: hand;" text="Load Data">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </Label>
+      <Rectangle fx:id="saveDataRectangle" arcHeight="25.0" arcWidth="25.0" blendMode="SCREEN" fill="#c9c9c9" height="38.0" layoutX="654.0" layoutY="417.0" onMouseEntered="#saveDataHoverEntered" onMouseExited="#saveDataHoverExited" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-cursor: hand;" width="200.0">
+         <effect>
+            <Blend />
+         </effect>
+      </Rectangle>
+      <Label fx:id="saveData" alignment="CENTER" layoutX="664.0" layoutY="421.0" onMouseClicked="#save" onMouseEntered="#saveDataHoverEntered" onMouseExited="#saveDataHoverExited" prefHeight="30.0" prefWidth="183.0" style="-fx-cursor: hand;" text="Save Data">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </Label>
+      <TableView fx:id="breakdownTable" layoutX="234.0" layoutY="241.0" prefHeight="215.0" prefWidth="375.0" style="-fx-border-color: ececec; -fx-background-color: transparent;">
+        <columns>
+          <TableColumn fx:id="category" prefWidth="128.8888702392578" style="-fx-alignment: CENTER;" text="Category" />
+          <TableColumn fx:id="date" prefWidth="126.44442749023438" style="-fx-alignment: CENTER;" text="Last Expense" />
+          <TableColumn fx:id="amount" prefWidth="114.666748046875" style="-fx-alignment: CENTER;" text="Amount" />
+        </columns>
+      </TableView>
+      <Line endX="-100.0" endY="273.8333435058594" layoutX="158.0" layoutY="69.0" startX="-100.0" visible="false" />
+      <Rectangle fx:id="logOutRectangle" arcHeight="25.0" arcWidth="25.0" fill="#eb3f3fbd" height="38.0" layoutX="654.0" layoutY="466.0" onMouseClicked="#switchToLogIn" onMouseEntered="#logOutHoverEntered" onMouseExited="#logOutHoverExited" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-cursor: hand;" width="200.0">
+         <effect>
+            <Blend />
+         </effect>
+      </Rectangle>
+      <Label fx:id="saveData1" alignment="CENTER" layoutX="664.0" layoutY="470.0" onMouseClicked="#switchToLogIn" onMouseEntered="#logOutHoverEntered" onMouseExited="#logOutHoverExited" prefHeight="30.0" prefWidth="183.0" style="-fx-cursor: hand;" text="Log Out" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
